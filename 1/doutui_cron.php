@@ -41,7 +41,11 @@ $mysql->closeDb();
 function push2weibo($status,$weibo){
     $title = str_replace('[score]','*',$status['title']);
     $title = str_replace('[/score]','星',$title);
-    $content = $status['user']['screen_name'].$title."[". $status['attachments'][0]['title']."]".$status['text'];
+    if("" !=$status['attachments'][0]['title']) {
+        $content = $status['user']['screen_name'].$title."[". $status['attachments'][0]['title']."]".$status['text'];
+    }else{
+        $content = $status['user']['screen_name'].$title.$status['text'];
+    }
     $content = substr($content,0,120);
     $status_url=DOUBAN_PEOPLE_URL.$status['user']['uid']."/status/".$status['id']."/";
     $result= $weibo->oauth->get('short_url/shorten',array("url_long"=>$status_url));
