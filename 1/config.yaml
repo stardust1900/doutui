@@ -1,0 +1,6 @@
+name: doutui
+version: 1
+cron:
+	- description: cron test
+ 	  url: doutui_cron.php
+ 	  schedule: "0 * * * *"

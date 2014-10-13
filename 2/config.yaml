@@ -1,0 +1,56 @@
+---
+name: doutui
+version: 2
+cron:
+	- description: cron test
+	  url: doutui_cron.php?remainder=0
+	  schedule: every 1 hour,offset 0
+
+	# - description:
+	#   url: doutui_cron.php?remainder=1
+	#   schedule: every 1 hour,offset 6
+
+	# - description:
+	#   url: doutui_cron.php?remainder=2
+	#   schedule: every 1 hour,offset 12
+
+	# - description:
+	#   url: doutui_cron.php?remainder=3
+	#   schedule: every 1 hour,offset 18
+
+	# - description:
+	#   url: doutui_cron.php?remainder=4
+	#   schedule: every 1 hour,offset 24
+
+	# - description:
+	#   url: doutui_cron.php?remainder=5
+	#   schedule: every 1 hour,offset 30
+
+	# - description:
+	#   url: doutui_cron.php?remainder=6
+	#   schedule: every 1 hour,offset 36
+
+	# - description:
+	#   url: doutui_cron.php?remainder=7
+	#   schedule: every 1 hour,offset 42
+
+	# - description:
+	#   url: doutui_cron.php?remainder=8
+	#   schedule: every 1 hour,offset 48
+
+	# - description:
+	#   url: doutui_cron.php?remainder=9
+	#   schedule: every 1 hour,offset 54
+
+	# - description:
+	#   url: doutui_cron2.php?remainder=0
+	#   schedule: every 1 hour,offset 1
+	# - description:
+	#   url: doutui_cron2.php?remainder=1
+	#   schedule: every 1 hour,offset 16
+	# - description:
+	#   url: doutui_cron2.php?remainder=2
+	#   schedule: every 1 hour,offset 31
+	# - description:
+	#   url: doutui_cron2.php?remainder=3
+	#   schedule: every 1 hour,offset 46
