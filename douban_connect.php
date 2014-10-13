@@ -15,7 +15,7 @@ $url = $o->getRequestToken($config['oauth_consumer_secret']);  //your consumer s
 $request = new OAuthRequest();
 $response = $request->request($url);
 
-//echo $response['content'];
+//echo $response;
 //parse response
 parse_str($response['content']);
 //save it

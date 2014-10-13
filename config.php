@@ -12,7 +12,7 @@ $config['oauth_authorize'] = 'http://www.douban.com/service/auth/authorize';
 $config['oauth_access_token'] = 'http://www.douban.com/service/auth/access_token';
 
 //callback
-$config['oauth_callback'] = 'http://doutui.sinaapp.com/douban_callback.php';
+$config['oauth_callback'] = 'http://3.doutui.sinaapp.com/douban_callback.php';
 
 //OAuth realm
 $config['realm'] = 'http://127.0.0.1/';

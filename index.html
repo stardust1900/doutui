@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>豆推</title>
+<link href="css/doutui.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.style3 {
+	font-size: xx-large;
+	font-weight: bold;
+	color: #00CC33;
+}
+#login{
+height:auto;
+width:400px;
+}
+
+
+#Layer1 {
+	position:absolute;
+	left:413px;
+	top:79px;
+	width:244px;
+	height:82px;
+	z-index:1;
+}
+-->
+</style>
+<script language="javascript">
+function trim(strInput){
+  if (strInput != null)
+  return strInput.replace(/(^\s*)|(\s*$)/g, "");
+  else
+  return "";
+}
+function checkForm() {
+	document.form1.email.value = trim(document.form1.email.value);
+	document.form1.passwd.value = trim(document.form1.passwd.value);
+    if (document.form1.email.value.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) == -1){
+		alert("电邮格式不对！");
+		document.form1.email.focus();
+		return false;
+	}
+	if(document.form1.passwd.value == ""){
+		alert("请输入密码！");
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="Layer1">
+  <input name="reqister" type="button" value="注 册" onclick="javascript:window.location= 'register.php'"/>
+</div>
+<div class="style3" id="title1">
+  <div align="center">豆瓣推荐搜索</div>
+</div>
+<hr />
+<form name="form1" method="post" action="login.php" onsubmit="return checkForm();">
+<div id="login">
+<table width="400" height="80" border="1" bordercolor="#00CC33">
+<tr>
+<td><div align="right">电邮：
+</div></td>
+<td><input type="text" name="email" />
+</td>
+</tr>
+<tr>
+<td><div align="right">密码：
+</div></td>
+<td><input type="password" name="passwd" /></td>
+</tr>
+<tr>
+<td colspan="2"><div align="center">
+  <input name="login" type="submit" value="登 陆" />
+</div></td>
+</tr>
+</table>
+</div>
+</form>
+<hr />
+</body>
+</html>
