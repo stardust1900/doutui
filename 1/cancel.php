@@ -10,5 +10,6 @@ $sql = "delete from  doutui_user where db_uid = '".$db_uid."'";
  }
  $mysql->closeDb();
  //echo $db_uid;
+ unset($_SESSION['db_uid']);
  header("Location:connect.php");
 ?>
