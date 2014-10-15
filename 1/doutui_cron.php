@@ -18,7 +18,8 @@ $records = $mysql->getData($sql);
             'redirect_url' => REDIRECT,
              'access_token' =>$record['db_access_token'],
           ));
-        $c = new SaeTClientV2(WB_AKEY,WB_SKEY,$record['wb_access_token']);
+        
+        $wb_access_token = $record['wb_access_token'];
  		$statuses = $douban->get('shuo/v2/statuses/user_timeline/'.$record['db_uid']);
         //var_dump($statuses);
         foreach ($statuses as $status) {
@@ -27,9 +28,9 @@ $records = $mysql->getData($sql);
               }
             if(isset($status['reshared_status'])){
                 $reshared = $status['reshared_status'];
-                $ret = push2weibo($reshared,$c);
+                $ret = push2weibo($reshared,$wb_access_token);
             }else{
-                $ret = push2weibo($status,$c);
+                $ret = push2weibo($status,$wb_access_token);
                 //var_dump($ret);
                 //break;
             }
@@ -38,7 +39,8 @@ $records = $mysql->getData($sql);
  }
 $mysql->closeDb();
 
-function push2weibo($status,$weibo){
+function push2weibo($status,$wb_access_token){
+    $weibo = new SaeTClientV2(WB_AKEY,WB_SKEY,$wb_access_token);
     $title = str_replace('[score]','*',$status['title']);
     $title = str_replace('[/score]','星',$title);
     if("" !=$status['attachments'][0]['title']) {
