@@ -18,7 +18,7 @@
 
     private $access_token = NULL;
 
-    private $user_agent = 'Douban PHP SDK by NetPuter';
+    private $user_agent = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0)';
     public $http_code = 0;
 
     public function __construct($config = array()) {
