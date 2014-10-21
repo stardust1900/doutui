@@ -58,7 +58,7 @@ function push2weibo($status,$wb_access_token){
     $surl=$result['urls'][0]['url_short'];
     
     if(isset($status['attachments'][0]['media'][0]['src']) && "image"==$status['attachments'][0]['media'][0]['type']) {
-        $ret = $weibo->upload($content." ".$surl,$status['attachments'][0]['media'][0]['src']);
+        $ret = $weibo->upload($content." ".$surl,str_replace('small','raw',$status['attachments'][0]['media'][0]['src']));
         // $postData = "content=".$content." ".$surl."&img=".$status['attachments'][0]['media'][0]['src']."&wb_access_token=".$wb_access_token;
         // sae_debug($postData);
         // $ret = $queue->addTask("/weibo_send.php", $postData);
