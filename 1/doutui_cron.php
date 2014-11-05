@@ -20,6 +20,7 @@ $records = $mysql->getData($sql);
         
         $wb_access_token = $record['wb_access_token'];
  		$statuses = $douban->get('shuo/v2/statuses/user_timeline/'.$record['db_uid']);
+        var_dump($statuses);
         if(is_null($statuses)) {
             continue;
         }
@@ -52,22 +53,26 @@ function push2weibo($status,$wb_access_token){
     }else{
         $content = $status['user']['screen_name'].$title.$status['text'];
     }
-    $content = substr($content,0,120);
+    // $content = substr($content,0,120);
+    $content = mb_substr($content,0,120,"utf-8");
     $status_url=DOUBAN_PEOPLE_URL.$status['user']['uid']."/status/".$status['id']."/";
     $result= $weibo->oauth->get('short_url/shorten',array("url_long"=>$status_url));
     $surl=$result['urls'][0]['url_short'];
     
     if(isset($status['attachments'][0]['media'][0]['src']) && "image"==$status['attachments'][0]['media'][0]['type']) {
         $ret = $weibo->upload($content." ".$surl,str_replace('small','raw',$status['attachments'][0]['media'][0]['src']));
+        var_dump($ret);
         // $postData = "content=".$content." ".$surl."&img=".$status['attachments'][0]['media'][0]['src']."&wb_access_token=".$wb_access_token;
         // sae_debug($postData);
         // $ret = $queue->addTask("/weibo_send.php", $postData);
     }else{
         $ret = $weibo->update($content." ".$surl);
+
+
         // $postData = "content=".$content." ".$surl."&wb_access_token=".$wb_access_token;
         // sae_debug($postData);
         // $ret = $queue->addTask("/weibo_send.php",$postData);
-        // var_dump($ret);
+        var_dump($ret);
         // $ret = $queue->addTask("/test1.php");
         // var_dump($ret);
         // $ret = $queue->addTask("http://doutui.sinaapp.com/test3.php");
