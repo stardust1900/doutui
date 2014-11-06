@@ -20,6 +20,7 @@ $records = $mysql->getData($sql);
         
         $wb_access_token = $record['wb_access_token'];
  		$statuses = $douban->get('shuo/v2/statuses/user_timeline/'.$record['db_uid']);
+        var_dump($douban);
         var_dump($statuses);
         if(is_null($statuses)) {
             continue;
